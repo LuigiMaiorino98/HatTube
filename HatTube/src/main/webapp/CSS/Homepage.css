@@ -1,0 +1,137 @@
+body{
+    background-color: cadetblue;
+    /*background-image: url("../images/sfondoHomepage.png");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#logo{                    /* logo  */
+    margin-top: 0px;
+    position: relative;
+    margin-left: 50%;
+    border: none;
+    float: right;
+
+
+}
+
+
+#sopra{                     /* striscia sopra*/
+    list-style-type: none;
+    background-color: black; /*colore striscia sopra */
+    margin: 5px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.left button{
+    float: left;
+    padding: 14px 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: background-color 1.0s,color 1.0s;
+
+}
+
+
+
+#sopra button:hover{
+    background-color: lightblue;
+    color:black;
+    transition: background-color 1.0s,color 1.0s ;
+}
+
+
+
+#logo{
+    margin-top: 0px;
+    margin-left: 15%;
+    position: relative;
+    background-color: transparent;
+    transition: background-color 1.0s,height 1.0s;
+
+
+}
+
+
+li img{
+    border: 2px solid white;
+}
+
+
+
+.right button{
+    float: left;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: background-color 1.0s,color 1.0s;
+}
+
+
+#sopra li{
+    background-color: black;
+    color: white;
+}
+
+
+#sopra a:hover {
+    background-color: black;
+    color: lightblue;
+}
+
+
+#sotto
+{
+    list-style-type: none;
+
+}
+
+
+
+#sotto li{
+    float: left;
+
+
+}
+
+
+#sotto a{
+    border: 2px black solid;
+    background: transparent;
+    color: black;
+    padding: 10px;
+
+}
+
+.sottoSx a:visited{
+    text-decoration-line: none;
+    color: black;
+}
+
+
+.sottoSx a:link{
+    text-decoration-line: none;
+    color: black;
+}
+
+
+#sotto a:hover {
+    background-color: black;
+    color: lightblue;
+}
+
+#sotto button{
+    float: left;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: background-color 1.0s,color 1.0s;
+}
+
+#sotto button:hover {
+    background-color: black;
+    color: lightblue;
+}
