@@ -1,5 +1,6 @@
 package LogicTier.Oggetti;
 
+//classe metodopagamento
 public class MetodoPagamento {
     private int id;
 

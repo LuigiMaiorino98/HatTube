@@ -1,7 +1,7 @@
 package LogicTier.Oggetti;
 
 import java.util.ArrayList;
-
+//classe carrello
 public class Carrello {
     private int carrelloId;
     private double totaleTemporaneo=0.00;

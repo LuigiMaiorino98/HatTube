@@ -1,5 +1,6 @@
 package LogicTier.Oggetti;
 
+//classe cliente
 public class Cliente extends Utente {
 
 

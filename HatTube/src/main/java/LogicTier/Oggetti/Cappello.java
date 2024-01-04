@@ -1,5 +1,6 @@
 package LogicTier.Oggetti;
 
+//classe cappello
 public class Cappello {
 
     private int codice;

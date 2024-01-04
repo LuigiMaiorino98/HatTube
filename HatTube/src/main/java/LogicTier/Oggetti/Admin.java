@@ -1,7 +1,7 @@
 package LogicTier.Oggetti;
 
 public class Admin extends Utente {
-    private int codiceAdmin;
+    private int codiceAdmin; //codice
 
 
 

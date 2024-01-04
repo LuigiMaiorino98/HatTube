@@ -1,5 +1,6 @@
 package LogicTier.Oggetti;
 
+//classe utente
 public class Utente {
 
     private String email;
