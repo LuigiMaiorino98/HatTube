@@ -1,8 +1,7 @@
-package Storage.Contenere;
+package Storage.DAO.Contenere;
 
 import LogicTier.Oggetti.Cappello;
 import Storage.ConPool;
-import Storage.Cappello.Cappello;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public class ContenereDAO {
     public void inserisciNelCarrello(int carrello, Cappello hat) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Contenere (Carrello,marca,Tipo,Modello,prezzo,quantita) VALUES(?,?,?,?,?,?)",
+                    "INSERT INTO contenere (Carrello,marca,Tipo,Modello,prezzo,quantita) VALUES(?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
 
@@ -38,12 +37,12 @@ public class ContenereDAO {
     public ArrayList<Cappello> recuperaContenuto(int idCarrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
-                    con.prepareStatement("SELECT id,marca,Tipo,Modello,prezzo,quantita FROM Contenere WHERE Carrello=?");
+                    con.prepareStatement("SELECT id,marca,Tipo,Modello,prezzo,quantita FROM contenere WHERE carrello=?");
 
             ps.setInt(1,idCarrello);
 
             ResultSet rs = ps.executeQuery();
-            ArrayList<Cappello> hats= new ArrayList<>();
+            ArrayList<Cappello> cappelli= new ArrayList<>();
             while (rs.next()) {
                 Cappello cappello = new Cappello();
                 cappello.setCodice(rs.getInt(1));
@@ -52,9 +51,9 @@ public class ContenereDAO {
                 cappello.setModello(rs.getString(4));
                 cappello.setPrezzo(rs.getDouble(5));
                 cappello.setQuantita(rs.getInt(6));
-                hats.add(cappello);
+                cappelli.add(cappello);
             }
-            return hats;
+            return cappelli;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -66,8 +65,8 @@ public class ContenereDAO {
         try (Connection con = ConPool.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement(
-                    "DELETE FROM Contenere " +
-                            "WHERE id =? and Carrello=?");
+                    "DELETE FROM contenere " +
+                            "WHERE id =? and carrello=?");
 
             ps.setInt(1, pos);
             ps.setInt(2, cartId);
@@ -83,3 +82,4 @@ public class ContenereDAO {
     }
 
 }
+

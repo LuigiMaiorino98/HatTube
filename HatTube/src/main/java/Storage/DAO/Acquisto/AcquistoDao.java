@@ -1,8 +1,8 @@
-package Storage.Acquisto;
+package Storage.DAO.Acquisto;
 
-import LogicTier.Oggetti.Cappello;
+import LogicTier.Oggetti.Acquisto;
 import Storage.ConPool;
-import Storage.Cappello.Cappello;
+import Storage.DAO.ContenutoAcquisto.ContenutoAcquistoDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class AcquistoDao {
     public int nuovoAcquisto(int carrelloId) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Acquisto (Carrello,prezzo) VALUES(?,?)",
+                    "INSERT INTO acquisto (Carrello,prezzo) VALUES(?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, carrelloId);
             ps.setDouble(2, 0.00);
@@ -36,7 +36,7 @@ public class AcquistoDao {
 
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
-            String query = "update Acquisto set  prezzo=" + prezzo+ " where id=" + id + ";";
+            String query = "update acquisto set  prezzo=" + prezzo+ " where id=" + id + ";";
             st.executeUpdate(query);
         }
         catch (SQLException e) {
@@ -45,26 +45,26 @@ public class AcquistoDao {
     }
 
 
-    public ArrayList<Cappello> recuperaContenutoAcquisto(int idAcquisto) {
+
+
+    public ArrayList<Acquisto> recuperaAcquisti() {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
-                    con.prepareStatement("SELECT id,marca,Tipo,Modello,prezzo,quantita FROM ContenutoAcquisto WHERE idAcquisto=?");
-
-            ps.setInt(1, idAcquisto);
+                    con.prepareStatement("SELECT * FROM Acquisto");
 
             ResultSet rs = ps.executeQuery();
-            ArrayList<Cappello> hats = new ArrayList<>();
+            ArrayList<Acquisto> acquisti=new ArrayList<>();
+            ContenutoAcquistoDAO contenutoAcquistoDAO=new ContenutoAcquistoDAO();
+
             while (rs.next()) {
-                Cappello cappello = new Cappello();
-                cappello.setCodice(rs.getInt(1));
-                cappello.setMarca(rs.getString(2));
-                cappello.setTipo(rs.getString(3));
-                cappello.setModello(rs.getString(4));
-                cappello.setPrezzo(rs.getDouble(5));
-                cappello.setQuantita(rs.getInt(6));
-                hats.add(cappello);
+                Acquisto acquisto=new Acquisto();
+                acquisto.setId(rs.getInt(1));
+                acquisto.setCarrello(rs.getInt(2));
+                acquisto.setPrezzo(rs.getDouble(3));
+                acquisto.setCappelli(contenutoAcquistoDAO.recuperaContentuoAcquisti(acquisto.getId()));
+                acquisti.add(acquisto);
             }
-            return hats;
+            return acquisti;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

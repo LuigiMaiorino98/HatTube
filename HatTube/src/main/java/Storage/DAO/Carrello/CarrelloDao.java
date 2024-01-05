@@ -1,4 +1,4 @@
-package Storage.Carrello;
+package Storage.DAO.Carrello;
 
 import LogicTier.Oggetti.Carrello;
 import Storage.ConPool;
@@ -6,10 +6,10 @@ import Storage.ConPool;
 import java.sql.*;
 
 public class CarrelloDao {
-    public int doNewCart() {
+    public int creaNuovoCarrello() {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Carrello (Numeroelementi,totaleprovvisorio) VALUES(?,?)",
+                    "INSERT INTO carrello (Numeroelementi,totaleTemporaneo) VALUES(?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setDouble(1, 0.00);
             ps.setInt(2, 0);
@@ -31,7 +31,7 @@ public class CarrelloDao {
     public Carrello recuperaCarrello(int id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
-                    con.prepareStatement("SELECT carrelloId,numeroelementi,totaleprovvisorio FROM Carrello WHERE carrelloId=?");
+                    con.prepareStatement("SELECT carrelloId,numeroelementi,totaleTemporaneo FROM carrello WHERE carrelloId=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -51,7 +51,7 @@ public class CarrelloDao {
 
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
-            String query = "update Carrello set totaleprovvisorio='" + carrello.getTotaleTemporaneo() + "', Numeroelementi=" + carrello.getNumeroElementi()+ " where carrelloId=" + carrello.getCarrelloId() + ";";
+            String query = "update carrello set totaleTemporaneo='" + carrello.getTotaleTemporaneo() + "', Numeroelementi=" + carrello.getNumeroElementi()+ " where carrelloId=" + carrello.getCarrelloId() + ";";
             st.executeUpdate(query);
         }
         catch (SQLException e) {
