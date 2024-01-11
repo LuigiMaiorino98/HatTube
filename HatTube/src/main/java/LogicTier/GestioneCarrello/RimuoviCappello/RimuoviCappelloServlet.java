@@ -1,4 +1,4 @@
-package GestioneCarrello.RimuoviCappello;
+package LogicTier.GestioneCarrello.RimuoviCappello;
 
 
 import LogicTier.GestioneCarrello.Carrello_Service;

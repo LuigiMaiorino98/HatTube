@@ -1,4 +1,4 @@
-package GestioneCarrello.ConfermaAcquisto;
+package LogicTier.GestioneCarrello.ConfermaAcquisto;
 
 import LogicTier.GestioneCarrello.Carrello_Service;
 import LogicTier.Oggetti.Acquisto;
