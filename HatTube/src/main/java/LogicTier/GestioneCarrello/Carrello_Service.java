@@ -1,4 +1,4 @@
-package GestioneCarrello;
+package LogicTier.GestioneCarrello;
 
 import LogicTier.Oggetti.Acquisto;
 import LogicTier.Oggetti.Cappello;
