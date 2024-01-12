@@ -1,0 +1,34 @@
+.card {
+    text-align: center;
+    width: 250px;
+    height: 350px;
+    font-family: arial;
+    margin-top: 30px ;
+    background-color: white;
+    font-size: small;
+    border: 2px solid black;
+}
+
+#prodotto{
+    background-color: transparent;
+    width: 200px;
+    height: 250px;
+    margin: 50px;
+    border: none;
+}
+
+
+.price {
+    color: black;
+    font-size: 22px;
+}
+
+#cappelli{
+    float: left;
+    margin-bottom: 90px;
+    margin-right: 60px;
+}
+
+ul{
+    list-style-type: none;
+}

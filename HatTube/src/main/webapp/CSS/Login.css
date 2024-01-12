@@ -1,0 +1,5 @@
+body{
+    background-image: url("./../images/bckgrLogin.png");
+    background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
+    background-size: cover; /* Scala l'immagine per coprire l'intero sfondo */
+}

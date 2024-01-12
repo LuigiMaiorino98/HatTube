@@ -1,0 +1,41 @@
+body{
+    background-image: url("../images/bckgrRegistrazione.png");
+    background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
+    background-size: cover; /* Scala l'immagine per coprire l'intero sfondo */
+}
+
+.textarea{
+    background: none;
+    color: white;
+    border: 1px solid;
+    transition:color 0.5s, background 0.5s;
+
+}
+.textarea:focus{
+    background: whitesmoke;
+    color: black;
+    transition:color 0.5s, background 0.5s;
+}
+
+.bottoni{
+    color: white;
+    background: none;
+    width: 90px;
+    height: 30px;
+    border: white;
+    border-width: 5px;
+    font-size: medium;
+    border: 1px solid;
+    transition:color 0.5s, background 0.5s;
+
+}
+
+.bottoni:hover{
+    background: cadetblue;
+    color: white;
+    transition:color 0.5s, background 0.5s;
+}
+ul li {
+
+
+}
