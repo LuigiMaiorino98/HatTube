@@ -30,12 +30,13 @@ public class AggiungiCarrelloServlet extends HttpServlet {
         //Creazione prodotto
         int quantita= Integer.parseInt(request.getParameter("quantita"));//quantità prodotto
         Cappello item=new Cappello();
+        item.setCodice(cappello.getCodice());
         item.setMarca(cappello.getMarca());
         double prezzo=cappello.getPrezzo()*quantita;
         item.setPrezzo(prezzo);
         item.setQuantita(quantita);
         item.setModello(cappello.getModello());
-        item.setTipo(cappello.getTipo());
+        item.setCategoria(cappello.getCategoria());
 
 
         //aggiunta prodotto al carrello dell'utente registrato
@@ -43,7 +44,7 @@ public class AggiungiCarrelloServlet extends HttpServlet {
         Cliente cliente= (Cliente) session.getAttribute("cliente");
         if(cliente!=null) {     //se è diverso da null l'utente è registrato (presente della Session )
             Carrello_Service carrello_service = new Carrello_Service();
-            carrello_service.aggiungiCarrello(cliente,cappello);
+            carrello_service.aggiungiCarrello(cliente,item);
         }
         else {  //ospite
             Carrello carrello= (Carrello) session.getAttribute("carrello");
@@ -59,7 +60,7 @@ public class AggiungiCarrelloServlet extends HttpServlet {
             }
         }
 
-                RequestDispatcher dispatcher =
+        RequestDispatcher dispatcher =
                 request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
 

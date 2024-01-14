@@ -16,10 +16,11 @@
 <form action="AggiungiCarrelloServlet" method="post">
   <h1>${cappello.marca} ${cappello.modello} </h1>
   <p id="prezzo" >€ ${cappello.prezzo}</p> <br>
-  <input type="hidden" value="${cappello.codice}" name="cappelloID">
-  <input type="number" value="1" min="1" max="${cappello.quantita}" name="quantita"> <button id="bottoneAddCarrello">Aggiungi al Carrello</button>
+  <input type="hidden" value="${cappello.codice}" name="cappelloID" id="cappelloID">
+  <input type="number" value="1" min="1" max="${cappello.quantita}" name="quantita">
+  <button id="bottoneAddCarrello">Aggiungi al Carrello</button>
 </form>
-  <p>${cappello.descrizione}</p>
+<p>${cappello.descrizione}</p>
 
 </div>
 </body>

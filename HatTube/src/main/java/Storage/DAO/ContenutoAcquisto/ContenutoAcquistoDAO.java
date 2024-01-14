@@ -21,7 +21,7 @@ public class ContenutoAcquistoDAO {
                 Cappello cappello=new Cappello();
                 cappello.setCodice(rs.getInt(1));
                 cappello.setMarca(rs.getString(2));
-                cappello.setTipo(rs.getString(3));
+                cappello.setCategoria(rs.getString(3));
                 cappello.setModello(rs.getString(4));
                 cappello.setPrezzo(rs.getDouble(5));
                 cappello.setQuantita(rs.getInt(6));
@@ -42,7 +42,7 @@ public class ContenutoAcquistoDAO {
 
             ps.setInt(1, acquisto);
             ps.setString(2, cappello.getMarca());
-            ps.setString(3, cappello.getTipo());
+            ps.setString(3, cappello.getCategoria());
             ps.setString(4, cappello.getModello());
             ps.setDouble(5, cappello.getPrezzo());
             ps.setInt(6, cappello.getQuantita());

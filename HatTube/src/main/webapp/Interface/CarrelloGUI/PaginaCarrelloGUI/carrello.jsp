@@ -22,19 +22,20 @@
   </tr>
 
   <%int pos=0;%>
-  <c:forEach items="${prodotti}" var="capello">
+  <c:forEach items="${prodotti}" var="cappello">
 
     <form action="RimuoviCappello" method="post">
       <tr>
-        <td >${capello.marca}</td>
-        <td>${capello.modello}</td>
-        <td>${capello.tipo}</td>
-        <td>${capello.quantita}</td>
-        <td>€${capello.prezzo}0</td>
+        <td >${cappello.marca}</td>
+        <td>${cappello.modello}</td>
+        <td>${cappello.categoria}</td>
+        <td>${cappello.quantita}</td>
+        <td>${cappello.prezzo}</td>
 
         <td>
 
           <input type="hidden" name="id" value="<%=pos%>">
+          <input type="hidden" name="idCappello" value="${cappello.codice}">
           <button class="RemoveBtn">RIMUOVI</button>
     </form>
     </td>

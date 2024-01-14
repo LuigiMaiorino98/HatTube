@@ -7,7 +7,7 @@ public class Cappello {
     private String descrizione;
     private double prezzo;
     private String marca;
-    private String tipo;
+    private String categoria;
     private String modello;
     private int quantita;
     private String immagine;
@@ -45,12 +45,12 @@ public class Cappello {
         this.marca = marca;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getModello() {

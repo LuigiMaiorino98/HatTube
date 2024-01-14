@@ -1,0 +1,177 @@
+body{
+    background-image: url("../images/sfondoCatalogo.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+
+}
+
+#FotoCatalogo{
+    display: inline-block;
+    margin-left: 300px;
+
+    width: 50%;
+}
+
+
+#logo{                    /* logo  */
+    margin-top: 0px;
+    position: relative;
+    margin-left: 50%;
+    border: none;
+    float: right;
+
+
+}
+
+
+#sopra{                     /* striscia sopra*/
+    list-style-type: none;
+    background-color: black; /*colore striscia sopra */
+    margin: 5px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.left button{
+    float: left;
+    padding: 14px 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: background-color 1.0s,color 1.0s;
+
+}
+
+
+
+#sopra button:hover{
+    background-color: lightblue;
+    color:black;
+    transition: background-color 1.0s,color 1.0s ;
+}
+
+
+#logo{
+    margin-top: 0px;
+    margin-left: 15%;
+    position: relative;
+    background-color: transparent;
+    transition: background-color 1.0s,height 1.0s;
+
+
+}
+
+
+li img{
+    border: 2px solid white;
+}
+
+
+li img:not(#Cappello):hover {
+    background-color: lightblue;
+    height: 50px;
+    transition: background-color 1.0s,height 1.5s;
+}
+
+
+.right button{
+    float: left;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: background-color 1.0s,color 1.0s;
+}
+
+
+#sopra li{
+    background-color: black;
+    color: white;
+}
+
+
+#sopra a:hover {
+    background-color: black;
+    color: lightblue;
+}
+
+
+#sotto
+{
+    list-style-type: none;
+    margin: 0px;
+    background: transparent;
+}
+
+
+
+#sotto li{
+    float: left;
+    margin-top: 0px;
+    margin-left: 0px;
+    position: relative;
+}
+
+
+#sotto a{
+    border: 2px black solid;
+    background: transparent;
+    color: black;
+    padding: 10px;
+
+}
+
+.sottoSx a:visited{
+    text-decoration-line: none;
+    color: black;
+}
+
+
+.sottoSx a:link{
+    text-decoration-line: none;
+    color: black;
+}
+
+
+#sotto a:hover {
+    background-color: black;
+    color: lightblue;
+}
+
+#sotto button{
+    float: left;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: background-color 1.0s,color 1.0s;
+}
+
+#sotto button:hover {
+    background-color: black;
+    color: lightblue;
+}
+
+#infop {
+    margin-top: 80px;
+    margin-right: 160px;
+    margin-left: 55px;
+    width: 255px;
+    height: 50px;
+    background-color: white;
+    font-size: 24px;
+    transition: background-color 1.0s,color 1.0s,font-size 1.0s;
+
+}
+
+#infop:hover{
+    background-color: black;
+    color: white;
+    font-size: 26px;
+    transition: background-color 1.0s,color 1.0s , font-size 1.0s;
+}
+
+#prodotto:hover > #infop{
+    background-color: black;
+    color: white;
+    font-size: 26px;
+    transition: background-color 1.0s,color 1.0s , font-size 1.0s;
+}
