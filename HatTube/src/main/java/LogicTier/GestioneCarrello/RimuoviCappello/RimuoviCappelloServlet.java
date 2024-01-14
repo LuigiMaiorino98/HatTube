@@ -22,13 +22,13 @@ public class RimuoviCappelloServlet extends HttpServlet {
 
         String address ="/Interface/CarrelloGUI/PaginaCarrelloGUI/carrello.jsp";
         int id= Integer.parseInt(request.getParameter("id"));
-
+        int idCappello = Integer.parseInt(request.getParameter("idCappello"));
         HttpSession session=request.getSession();
         Cliente cliente= (Cliente) session.getAttribute("cliente");
 
         if(cliente!=null){
             Carrello_Service carrello_service = new Carrello_Service();
-            Carrello  carrello = carrello_service.rimuoviCappello(cliente,id);
+            Carrello  carrello = carrello_service.rimuoviCappello(cliente,idCappello);
             request.setAttribute("prodotti",carrello.getProdotti());
             request.setAttribute("carrello",carrello);
 
@@ -36,7 +36,7 @@ public class RimuoviCappelloServlet extends HttpServlet {
         else {
             Carrello carrello= (Carrello) session.getAttribute("carrello");
             if(carrello.getNumeroElementi()>=1){
-                carrello.rimuoviProdotto(id);
+                carrello.rimuoviCappelloUtente(id);
                 request.setAttribute("prodotti", carrello.getProdotti());
                 request.setAttribute("carrello", carrello);
             }
@@ -48,5 +48,3 @@ public class RimuoviCappelloServlet extends HttpServlet {
     }
 
 }
-
-

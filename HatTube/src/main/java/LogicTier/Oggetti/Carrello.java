@@ -1,13 +1,13 @@
 package LogicTier.Oggetti;
 
 import java.util.ArrayList;
-//classe carrello
+
 public class Carrello {
     private int carrelloId;
-    private double totaleTemporaneo=0.00;
-    private int numeroElementi=0;
+    private double totaleTemporaneo = 0.00;
+    private int numeroElementi = 0;
 
-    ArrayList<Cappello> prodotti=new ArrayList<>();
+    ArrayList<Cappello> prodotti = new ArrayList<>();
 
     public ArrayList<Cappello> getProdotti() {
         return prodotti;
@@ -17,26 +17,40 @@ public class Carrello {
         this.prodotti = prodotti;
     }
 
-    public void aggiungiProdotto(Cappello hat){
+    public void aggiungiProdotto(Cappello hat) {
         this.prodotti.add(hat);
-        this.totaleTemporaneo+=hat.getPrezzo();
-        this.numeroElementi=this.numeroElementi+1;
+        this.totaleTemporaneo += hat.getPrezzo();
+        this.numeroElementi = this.numeroElementi + 1;
     }
 
-
-
-
-    public Cappello rimuoviProdotto(int pos){
+    public Cappello rimuoviCappelloUtente(int pos){
         if(pos>=0) {
-            Cappello hat = this.prodotti.remove(pos);
-            this.totaleTemporaneo = totaleTemporaneo - hat.getPrezzo();
-            this.numeroElementi -= 1;
-            return hat;
+            Cappello cappello= this.prodotti.remove(pos);
+            this.totaleTemporaneo = totaleTemporaneo - cappello.getPrezzo();
+            this.numeroElementi -= cappello.getQuantita();
+            return cappello;
         }
         else {
             return null;
         }
     }
+
+    public Cappello rimuoviProdotto(int pos) {
+        if (pos >= 0) {
+            for (Cappello cappello : this.prodotti) {
+                if (cappello.getCodice() == pos) {
+                    this.prodotti.remove(cappello);
+                    this.totaleTemporaneo = totaleTemporaneo - cappello.getPrezzo();
+                    this.numeroElementi -= 1;
+                    return cappello;
+                }
+            }
+
+        }
+        return null;
+    }
+
+
 
 
     public int getCarrelloId() {
