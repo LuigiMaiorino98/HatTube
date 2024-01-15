@@ -14,7 +14,7 @@ public class AboutUsServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        String address="/WEB-INF/aboutUs/aboutUs.jsp";
+        String address="/Menu/AboutUs.jsp";
         RequestDispatcher dispatcher= request.getRequestDispatcher(address);
         dispatcher.forward(request,response);
 
