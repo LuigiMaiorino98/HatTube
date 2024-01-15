@@ -9,8 +9,5 @@
         <module name="HatTube" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="HatTube" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
