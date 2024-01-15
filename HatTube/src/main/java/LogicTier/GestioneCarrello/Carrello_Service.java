@@ -4,9 +4,9 @@ import LogicTier.Oggetti.Acquisto;
 import LogicTier.Oggetti.Cappello;
 import LogicTier.Oggetti.Carrello;
 import LogicTier.Oggetti.Cliente;
-import Storage.DAO.Acquisto.AcquistoDao;
+import Storage.DAO.Acquisto.AcquistoDAO;
 import Storage.DAO.Cappello.CappelloDAO;
-import Storage.DAO.Carrello.CarrelloDao;
+import Storage.DAO.Carrello.CarrelloDAO;
 import Storage.DAO.Contenere.ContenereDAO;
 import Storage.DAO.ContenutoAcquisto.ContenutoAcquistoDAO;
 
@@ -17,7 +17,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
 
     @Override
     public void aggiungiCarrello(Cliente cliente, Cappello cappello) {
-        CarrelloDao carrelloDAO = new CarrelloDao();
+        CarrelloDAO carrelloDAO = new CarrelloDAO();
         Carrello carrello = carrelloDAO.recuperaCarrello(cliente.getCarrello().getCarrelloId());
 
         carrello.aggiungiProdotto(cappello);
@@ -30,7 +30,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
 
     @Override
     public Carrello svuotaCarrello(Cliente cliente) {
-        CarrelloDao carrelloDAO = new CarrelloDao();
+        CarrelloDAO carrelloDAO = new CarrelloDAO();
         Carrello carrello = carrelloDAO.recuperaCarrello(cliente.getCarrello().getCarrelloId());
         ContenereDAO contentereDAO = new ContenereDAO();
 
@@ -50,7 +50,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
 
     @Override
     public Carrello rimuoviCappello(Cliente cliente, int id) {
-        CarrelloDao carrelloDAO = new CarrelloDao();
+        CarrelloDAO carrelloDAO = new CarrelloDAO();
         Carrello carrello = carrelloDAO.recuperaCarrello(cliente.getCarrello().getCarrelloId());
         ContenereDAO contentereDAO = new ContenereDAO();
 
@@ -66,7 +66,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
 
     @Override
     public Acquisto confermaAcquisto(Cliente cliente) {
-        CarrelloDao carrelloDAO = new CarrelloDao();
+        CarrelloDAO carrelloDAO = new CarrelloDAO();
         Carrello carrello = carrelloDAO.recuperaCarrello(cliente.getCarrello().getCarrelloId());
         ContenereDAO contentereDAO = new ContenereDAO();
         ArrayList<Cappello> cappelli = contentereDAO.recuperaContenuto(carrello.getCarrelloId());
@@ -76,7 +76,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
 
         if (carrello.getTotaleTemporaneo() > 0.00) {
 
-            AcquistoDao acquistoDao = new AcquistoDao();
+            AcquistoDAO acquistoDao = new AcquistoDAO();
             int id = acquistoDao.nuovoAcquisto(cliente.getCarrello().getCarrelloId());
             Acquisto acquisto = new Acquisto();
             acquisto.setId(id);
@@ -104,7 +104,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
 
     @Override
     public Carrello recuperaCarrello(int idCarrello){
-        CarrelloDao carrelloDAO=new CarrelloDao();
+        CarrelloDAO carrelloDAO=new CarrelloDAO();
         Carrello carrello=carrelloDAO.recuperaCarrello(idCarrello);
 
         ContenereDAO contentereDAO=new ContenereDAO();                                   //recupero il contenuto del carrello e lo carico all'interno

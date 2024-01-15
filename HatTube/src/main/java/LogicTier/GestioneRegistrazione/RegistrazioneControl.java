@@ -23,21 +23,23 @@ public class RegistrazioneControl extends HttpServlet {
         Cliente cliente = new Cliente();
         MetodoPagamento metodoPagamento = new MetodoPagamento();
         Registrazione_Service service= new Registrazione_Service();
-        if(service.ValidaNome(request.getParameter("nome")) && service.ValidaCognome(request.getParameter("cognome")) && service.ValidaCitta(request.getParameter("citta")) && service.ValidaVia(request.getParameter("via") )&& service.ValidaCap((request.getParameter("cap"))) && service.ValidaNumCarta((request.getParameter("numcarta")))&& service.ValidaCVV(Integer.parseInt(request.getParameter("cvv"))) && service.ValidaNomeI(request.getParameter("nomei" ))&& service.ValidaData(request.getParameter("MeseS")+ "\\" +request.getParameter("AnnoS")) && service.ValidaEmail(request.getParameter("email")) && service.ValidaPassword(request.getParameter("password")) && service.ValidaUsername(request.getParameter("username"))) {
-            cliente.setNome(request.getParameter("nome"));
-            cliente.setCognome(request.getParameter("cognome"));
-            cliente.setCitta(request.getParameter("citta"));
-            cliente.setVia(request.getParameter("via"));
-            cliente.setCAP(request.getParameter("cap"));
-            cliente.setPassword(request.getParameter("password"));
-            cliente.setUsername(request.getParameter("username"));
-            cliente.setEmail(request.getParameter("email"));
-            metodoPagamento.setCvv(Integer.parseInt(request.getParameter("cvv")));
-            metodoPagamento.setIntestatario(request.getParameter("nomei"));
-            metodoPagamento.setNumcarta(request.getParameter("numcarta"));
-            metodoPagamento.setDataScadenza(request.getParameter("MeseS")+ "\\" +request.getParameter("AnnoS"));
+        cliente.setNome(request.getParameter("nome"));
+        cliente.setCognome(request.getParameter("cognome"));
+        cliente.setCitta(request.getParameter("citta"));
+        cliente.setVia(request.getParameter("via"));
+        cliente.setCAP(request.getParameter("cap"));
+        cliente.setPassword(request.getParameter("password"));
+        cliente.setUsername(request.getParameter("username"));
+        cliente.setEmail(request.getParameter("email"));
+        metodoPagamento.setCvv(Integer.parseInt(request.getParameter("cvv")));
+        metodoPagamento.setIntestatario(request.getParameter("nomei"));
+        metodoPagamento.setNumcarta(request.getParameter("numcarta"));
+        metodoPagamento.setDataScadenza(request.getParameter("MeseS")+ "\\" +request.getParameter("AnnoS"));
+        if(service.validaRegistrazione(cliente,metodoPagamento)){
+            cliente.setMetodoPagamento(metodoPagamento);
+            service.salvaCliente(metodoPagamento,cliente);
             HttpSession httpSession = request.getSession(true);
-            httpSession.setAttribute("cliente",service.SalvaCliente(metodoPagamento,cliente));
+            httpSession.setAttribute("cliente",cliente);
             address = "/Interface/AutenticazioneGUI/paginaLogin.jsp";
         }else {
             request.setAttribute("cliente" , cliente);

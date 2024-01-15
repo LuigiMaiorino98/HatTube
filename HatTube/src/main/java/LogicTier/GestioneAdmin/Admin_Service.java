@@ -2,7 +2,7 @@ package LogicTier.GestioneAdmin;
 
 import LogicTier.Oggetti.Acquisto;
 import LogicTier.Oggetti.Cappello;
-import Storage.DAO.Acquisto.AcquistoDao;
+import Storage.DAO.Acquisto.AcquistoDAO;
 import Storage.DAO.Cappello.CappelloDAO;
 
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class Admin_Service implements Admin_Interfaccia{
     @Override
     public ArrayList<Acquisto> recuperaAcquisti(){
 
-        AcquistoDao acquistoDao= new AcquistoDao();
+        AcquistoDAO acquistoDao= new AcquistoDAO();
 
         ArrayList<Acquisto> acquisti =acquistoDao.recuperaAcquisti();
 

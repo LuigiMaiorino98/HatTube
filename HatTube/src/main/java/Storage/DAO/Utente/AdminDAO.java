@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AdminDao {
+public class AdminDAO {
 
     public Admin controlloLogin(String email, String password) {
         try (Connection con = ConPool.getConnection()) {

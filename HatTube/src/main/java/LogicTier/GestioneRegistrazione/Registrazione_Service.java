@@ -3,9 +3,9 @@ package LogicTier.GestioneRegistrazione;
 import LogicTier.Oggetti.Carrello;
 import LogicTier.Oggetti.Cliente;
 import LogicTier.Oggetti.MetodoPagamento;
-import Storage.DAO.Carrello.CarrelloDao;
-import Storage.DAO.MetodoPagamento.MetodoPagamentoDao;
-import Storage.DAO.Utente.ClienteDao;
+import Storage.DAO.Carrello.CarrelloDAO;
+import Storage.DAO.MetodoPagamento.MetodoPagamentoDAO;
+import Storage.DAO.Utente.ClienteDAO;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,196 +16,150 @@ public class Registrazione_Service implements Registrazione_Interfaccia {
 
     private Logger logger = Logger.getLogger(Registrazione_Interfaccia.class.getName());
 
-    @Override
-    public boolean ValidaNome(String name) {
-        String reg = "[a-zA-Z]{1,20}";
-        Pattern pattern = Pattern.compile(reg);
-        Matcher matcher = pattern.matcher(name);
+    public boolean validaRegistrazione(Cliente cliente ,MetodoPagamento metodoPagamento) {
+
+        String regemail ="^([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$";
+        Pattern pattern = Pattern.compile(regemail);
+        Matcher matcher = pattern.matcher(cliente.getEmail());
 
         if (!matcher.matches()) {
-            logger.log(Level.SEVERE, "ERRORE NOME NON VALIDO");
-            return false;
-        } else {
 
-            return true;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaCognome(String cognome) {
-        String reg = "[a-zA-Z]{1,20}";
-        Pattern pattern = Pattern.compile(reg);
-        Matcher matcher = pattern.matcher(cognome);
-
-        if (!matcher.matches()) {
-            logger.log(Level.SEVERE, "ERRORE COGNOME NON VALIDO");
-            return false;
-        } else {
-
-            return true;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaCitta(String citta) {
-        String reg = "[a-zA-Z]{1,20}";
-        Pattern pattern = Pattern.compile(reg);
-        Matcher matcher = pattern.matcher(citta);
-
-        if (!matcher.matches()) {
-            logger.log(Level.SEVERE, "ERRORE CITTA NON VALIDA");
-            return false;
-        } else {
-
-            return true;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaVia(String via) {
-        String reg = "[a-zA-Z0-9\\s]{1,20}";
-        Pattern pattern = Pattern.compile(reg);
-        Matcher matcher = pattern.matcher(via);
-
-        if (!matcher.matches()) {
-            logger.log(Level.SEVERE, "ERRORE VIA NON VALIDA");
-            return false;
-        } else {
-
-            return true;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaCap(String cap) {
-        String regex = "[0-9]{5}";
-        String value = String.valueOf(cap);
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(value);
-
-        if (matcher.matches()) {
-            return true;
-        } else {
-            logger.log(Level.SEVERE, "ERRORE CAP NON VALIDO");
-            return false;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaNumCarta(String numcarta) {
-        String regex = "[0-9]{16}";
-        String value = String.valueOf(numcarta);
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(value);
-
-        if (matcher.matches()) {
-            return true;
-        } else {
-            logger.log(Level.SEVERE, "ERRORE NUM CARTA NON VALIDO");
-            return false;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaCVV(int cvv) {
-        String regex = "[0-9]{3}";
-        String value = String.valueOf(cvv);
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(value);
-
-        if (matcher.matches()) {
-            return true;
-        } else {
-            logger.log(Level.SEVERE, "ERRORE NUM CVV NON VALIDO");
-            return false;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaNomeI(String nomei) {
-        String regex = "[a-zA-Z\\s]+";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(nomei);
-
-        if (matcher.matches()) {
-            return true;
-        } else {
-            logger.log(Level.SEVERE, "ERRORE NOME INTESTATARIO NON VALIDO");
-            return false;
-        }
-    }
-
-    @Override
-    public boolean ValidaData(String data) {
-
-        if (data != null) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    @Override
-    public boolean ValidaEmail(String email) {
-        String regex = "^(.+)@(.+)$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(email);
-
-        if (matcher.matches()) {
-            return true;
-        } else {
             logger.log(Level.SEVERE, "ERRORE EMAIL  NON VALIDA");
             return false;
         }
 
-    }
 
-    @Override
-    public boolean ValidaPassword(String password){
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[?!@#$%^&+=.,])(?=\\S+$).{8,}";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(password);
+        String reg = "[a-zA-Z]{1,20}";
+        pattern = Pattern.compile(reg);
+        matcher = pattern.matcher(cliente.getNome());
 
-        if (matcher.matches()) {
-            return true;
-        } else {
+        if (!matcher.matches()) {
+            logger.log(Level.SEVERE, "ERRORE NOME NON VALIDO");
+            return false;
+        }
+
+
+        reg = "[a-zA-Z]{1,20}";
+        pattern = Pattern.compile(reg);
+        matcher = pattern.matcher(cliente.getCognome());
+
+        if (!matcher.matches()) {
+            logger.log(Level.SEVERE, "ERRORE COGNOME NON VALIDO");
+            return false;
+        }
+
+
+        reg = "[a-zA-Z]{1,20}";
+        pattern = Pattern.compile(reg);
+        matcher = pattern.matcher(cliente.getCitta());
+
+        if (!matcher.matches()) {
+            logger.log(Level.SEVERE, "ERRORE CITTA NON VALIDA");
+            return false;
+        }
+
+
+        reg = "[a-zA-Z0-9\\s]{1,20}";
+        pattern = Pattern.compile(reg);
+        matcher = pattern.matcher(cliente.getVia());
+
+        if (!matcher.matches()) {
+            logger.log(Level.SEVERE, "ERRORE VIA NON VALIDA");
+            return false;
+        }
+
+
+        reg = "[0-9]{5}";
+        String value = String.valueOf(cliente.getCAP());
+        pattern = Pattern.compile(reg);
+        matcher = pattern.matcher(value);
+
+        if (!matcher.matches()) {
+            logger.log(Level.SEVERE, "ERRORE CAP NON VALIDO");
+            return false;
+        }
+
+
+        String regex = "[0-9]{16}";
+        value = String.valueOf(metodoPagamento.getNumcarta());
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(value);
+
+        if (!matcher.matches()) {
+
+            logger.log(Level.SEVERE, "ERRORE NUM CARTA NON VALIDO");
+            return false;
+        }
+
+
+        regex = "[0-9]{3}";
+        value = String.valueOf(metodoPagamento.getCvv());
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(value);
+
+        if (!matcher.matches()) {
+
+            logger.log(Level.SEVERE, "ERRORE NUM CVV NON VALIDO");
+            return false;
+        }
+
+
+        regex = "[a-zA-Z\\s]+";
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(metodoPagamento.getIntestatario());
+
+        if (!matcher.matches()) {
+
+            logger.log(Level.SEVERE, "ERRORE NOME INTESTATARIO NON VALIDO");
+            return false;
+        }
+
+
+        if (metodoPagamento.getDataScadenza().length()<7) {
+            logger.log(Level.SEVERE,"ERRORE DATA NON VALIDA");
+            return false;
+        }
+
+
+
+
+
+        regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[?!@#$%^&+=.,])(?=\\S+$).{8,}";
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(cliente.getPassword());
+
+        if (!matcher.matches()) {
+
             logger.log(Level.SEVERE, "ERRORE PASSWORD  NON VALIDA ");
             return false;
         }
-    }
 
-    @Override
-    public boolean ValidaUsername(String username){
-        String regex = "[a-zA-Z0-9] {1,20}";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(username);
 
-        if (matcher.matches()) {
-            return true;
-        } else {
+        regex = "[a-zA-Z0-9]{1,20}";
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(cliente.getUsername());
+
+        if (!matcher.matches()) {
+
             logger.log(Level.SEVERE, "ERRORE USERNAME  NON VALIDO ");
             return false;
         }
+        return true;
     }
 
-    @Override
-    public Cliente SalvaCliente(MetodoPagamento metodoPagamento, Cliente cliente) {
-        ClienteDao clienteDao = new ClienteDao();
 
-        MetodoPagamentoDao metodoPagamentoDao = new MetodoPagamentoDao();
+
+
+    @Override
+    public Cliente salvaCliente(MetodoPagamento metodoPagamento, Cliente cliente) {
+        ClienteDAO clienteDao = new ClienteDAO();
+
+        MetodoPagamentoDAO metodoPagamentoDao = new MetodoPagamentoDAO();
         int id = metodoPagamentoDao.SalvaMetodoPagamento(metodoPagamento);    //crea nel db la carta e ritorna la chiave che verrà messa in id
         MetodoPagamento nuovoMetodoPagamento = metodoPagamentoDao.RecuperaMetodoPagamento(id);
         //salva l'id nel numero carta
         cliente.setMetodoPagamento(nuovoMetodoPagamento);
-        CarrelloDao cd = new CarrelloDao();
+        CarrelloDAO cd = new CarrelloDAO();
         int idCarrello = cd.creaNuovoCarrello();        //crea nel db il carrello e ritorna la chiave che verrà messa in idCarrello
         Carrello carrello = cd.recuperaCarrello(idCarrello);
         cliente.setCarrello(carrello);
