@@ -10,7 +10,7 @@ public class Login_Service implements Login_Interfaccia{
 
 
     @Override
-    public Cliente loginClienteFacade(String email, String password){
+    public Cliente loginCliente(String email, String password){
         ClienteDAO clienteDao=new ClienteDAO();
         Cliente cliente = clienteDao.controlloLogin(email, password);
         return cliente;
@@ -18,7 +18,7 @@ public class Login_Service implements Login_Interfaccia{
     }
 
     @Override
-    public Admin loginAdminFacade(String email , String password){
+    public Admin loginAdmin(String email , String password){
         AdminDAO adminDao = new AdminDAO();
         Admin admin = adminDao.controlloLogin(email, password);
         return admin;

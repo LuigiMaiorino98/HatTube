@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /*Prendiamo i valori del form all'interno della jsp di aggiunta, controllando prima che questi valori siano corretti*/
-@WebServlet(value = "/AdmInserisciCappelloServlet")
+@WebServlet (value = "/AdmInserisciCappelloServlet")
 public class AggiungiControl extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String address="/Interface/AdminGUI/AdmAddGUI/AdmAdd.jsp";

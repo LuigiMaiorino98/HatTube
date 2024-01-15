@@ -24,14 +24,14 @@ public class LoginControl extends HttpServlet {
         // verifichiamo se l'utente è presente nel DB se si ritorna un oggetto Cliente altrimenti null
 
         Login_Service login_service=new Login_Service();
-        Cliente cliente=login_service.loginClienteFacade(email,password);
+        Cliente cliente=login_service.loginCliente(email,password);
         if(cliente!=null) {
             HttpSession session = request.getSession(true);
             session.setAttribute("cliente", cliente);
             address = "index.jsp";
         }
         else {
-            Admin admin = login_service.loginAdminFacade(email,password);
+            Admin admin = login_service.loginAdmin(email,password);
             if (admin!=null) {
 
                 HttpSession session = request.getSession(true);

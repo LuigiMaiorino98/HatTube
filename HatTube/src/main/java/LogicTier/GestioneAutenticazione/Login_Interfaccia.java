@@ -5,7 +5,7 @@ import LogicTier.Oggetti.Cliente;
 
 public interface Login_Interfaccia {
 
-    Cliente loginClienteFacade(String email, String password);
-    Admin loginAdminFacade(String email , String password);
+    Cliente loginCliente(String email, String password);
+    Admin loginAdmin(String email , String password);
 
 }
