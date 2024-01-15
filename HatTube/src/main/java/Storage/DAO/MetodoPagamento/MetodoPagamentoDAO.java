@@ -5,7 +5,7 @@ import Storage.ConPool;
 
 import java.sql.*;
 
-public class MetodoPagamentoDao {
+public class MetodoPagamentoDAO {
     public int SalvaMetodoPagamento(MetodoPagamento carta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(

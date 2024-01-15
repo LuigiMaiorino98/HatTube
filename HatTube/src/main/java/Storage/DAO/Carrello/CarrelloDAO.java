@@ -5,7 +5,7 @@ import Storage.ConPool;
 
 import java.sql.*;
 
-public class CarrelloDao {
+public class CarrelloDAO {
     public int creaNuovoCarrello() {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(

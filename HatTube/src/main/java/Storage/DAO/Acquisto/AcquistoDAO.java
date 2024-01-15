@@ -7,7 +7,7 @@ import Storage.DAO.ContenutoAcquisto.ContenutoAcquistoDAO;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class AcquistoDao {
+public class AcquistoDAO {
 
     public int nuovoAcquisto(int carrelloId) {
         try (Connection con = ConPool.getConnection()) {

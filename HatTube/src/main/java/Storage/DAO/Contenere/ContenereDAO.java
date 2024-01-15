@@ -4,7 +4,7 @@ import LogicTier.Oggetti.Carrello;
 import Storage.ConPool;
 import LogicTier.Oggetti.Cappello;
 import Storage.DAO.Cappello.CappelloDAO;
-import Storage.DAO.Carrello.CarrelloDao;
+import Storage.DAO.Carrello.CarrelloDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class ContenereDAO {
 
             ArrayList<Cappello> cappelli= new ArrayList<>();
             CappelloDAO cappelloDAO=new CappelloDAO();
-            CarrelloDao carrelloDao=new CarrelloDao();
+            CarrelloDAO carrelloDao=new CarrelloDAO();
             Carrello carrello=carrelloDao.recuperaCarrello(idCarrello);
             while (rs.next()) {
                 Cappello cappello=cappelloDAO.RecuperaCappelloID(rs.getInt(1));

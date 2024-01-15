@@ -4,15 +4,15 @@ import LogicTier.Oggetti.Carrello;
 import LogicTier.Oggetti.Cliente;
 import LogicTier.Oggetti.MetodoPagamento;
 import Storage.ConPool;
-import Storage.DAO.Carrello.CarrelloDao;
-import Storage.DAO.MetodoPagamento.MetodoPagamentoDao;
+import Storage.DAO.Carrello.CarrelloDAO;
+import Storage.DAO.MetodoPagamento.MetodoPagamentoDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
- public class ClienteDao {
+ public class ClienteDAO {
     public void SalvaCliente(Cliente cliente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -57,10 +57,10 @@ import java.sql.SQLException;
                 cliente.setCAP(rs.getString(5));
                 cliente.setVia(rs.getString(6));
                 cliente.setCitta(rs.getString(7));
-                MetodoPagamentoDao metodoPagamentoDao = new MetodoPagamentoDao();
+                MetodoPagamentoDAO metodoPagamentoDao = new MetodoPagamentoDAO();
                 MetodoPagamento metodoPagamento = metodoPagamentoDao.RecuperaMetodoPagamento(rs.getInt(8));
                 cliente.setMetodoPagamento(metodoPagamento);
-                CarrelloDao carrelloDao = new CarrelloDao();
+                CarrelloDAO carrelloDao = new CarrelloDAO();
                 Carrello carrello = carrelloDao.recuperaCarrello(rs.getInt(9));
 
                 cliente.setCarrello(carrello);
