@@ -61,7 +61,7 @@ public class AcquistoDao {
                 acquisto.setId(rs.getInt(1));
                 acquisto.setCarrello(rs.getInt(2));
                 acquisto.setPrezzo(rs.getDouble(3));
-                acquisto.setCappelli(contenutoAcquistoDAO.recuperaContentuoAcquisti(acquisto.getId()));
+                acquisto.setCappelli(contenutoAcquistoDAO.recuperaContenutoAcquisti(acquisto.getId()));
                 acquisti.add(acquisto);
             }
             return acquisti;

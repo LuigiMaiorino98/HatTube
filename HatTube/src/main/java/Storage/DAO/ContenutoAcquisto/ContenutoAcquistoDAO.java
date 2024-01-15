@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ContenutoAcquistoDAO {
 
-    public ArrayList<Cappello> recuperaContentuoAcquisti(int idAcquisto) {
+    public ArrayList<Cappello> recuperaContenutoAcquisti(int idAcquisto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT id,marca,Tipo,Modello,prezzo,quantita FROM ContenutoAcquisto WHERE idAcquisto=?");
