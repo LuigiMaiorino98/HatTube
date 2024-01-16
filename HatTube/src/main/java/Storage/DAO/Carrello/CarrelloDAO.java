@@ -47,7 +47,7 @@ public class CarrelloDAO {
         }
     }
 
-    public void AggiornaCarrello(Carrello carrello){
+    public void aggiornaCarrello(Carrello carrello){
 
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();

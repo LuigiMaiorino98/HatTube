@@ -68,7 +68,7 @@ public class ContenereDAO {
             CarrelloDAO carrelloDao=new CarrelloDAO();
             Carrello carrello=carrelloDao.recuperaCarrello(idCarrello);
             while (rs.next()) {
-                Cappello cappello=cappelloDAO.RecuperaCappelloID(rs.getInt(1));
+                Cappello cappello=cappelloDAO.recuperaCappelloID(rs.getInt(1));
                 cappello.setPrezzo(rs.getDouble(3));
                 cappello.setQuantita(rs.getInt(4));
                 cappelli.add(cappello);

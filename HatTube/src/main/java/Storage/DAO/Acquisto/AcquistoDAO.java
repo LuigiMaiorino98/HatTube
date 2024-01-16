@@ -32,7 +32,7 @@ public class AcquistoDAO {
     }
 
 
-    public void AggiornaAcquisto(double prezzo,int id){
+    public void aggiornaAcquisto(double prezzo,int id){
 
         try (Connection con = ConPool.getConnection()) {
             Statement st = con.createStatement();
