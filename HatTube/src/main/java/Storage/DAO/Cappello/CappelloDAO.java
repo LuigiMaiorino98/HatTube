@@ -33,7 +33,7 @@ public class CappelloDAO {
         }
     }
 
-    public ArrayList<Cappello> RecuperaCappelliPerCategoria(String categoria) {
+    public ArrayList<Cappello> recuperaCappelliPerCategoria(String categoria) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT * FROM Cappello WHERE Tipo=?");
@@ -59,7 +59,7 @@ public class CappelloDAO {
         }
     }
 
-    public Cappello RecuperaCappelloID(int id) {
+    public Cappello recuperaCappelloID(int id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT Codice, Descrizione, Prezzo, Marca,Tipo,Modello,Quantita,Immagine FROM Cappello WHERE Codice=?");

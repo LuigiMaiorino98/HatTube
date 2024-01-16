@@ -20,7 +20,7 @@ public class Admin_Service implements Admin_Interfaccia{
     @Override
     public void eliminaCappello(int codice){
         CappelloDAO cappelloDAO = new CappelloDAO();
-        Cappello cappello = cappelloDAO.RecuperaCappelloID(codice);
+        Cappello cappello = cappelloDAO.recuperaCappelloID(codice);
         CappelloDAO cappelloDao = new CappelloDAO();
         cappelloDao.rimuoviCappello(cappello);
 

@@ -90,7 +90,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
             }
 
             acquisto.setPrezzo(carrello.getTotaleTemporaneo());
-            acquistoDao.AggiornaAcquisto(carrello.getTotaleTemporaneo(), acquisto.getId());
+            acquistoDao.aggiornaAcquisto(carrello.getTotaleTemporaneo(), acquisto.getId());
             carrello.setTotaleTemporaneo(0.00);
             carrello.setNumeroElementi(0);
             carrelloDAO.AggiornaCarrello(carrello);
