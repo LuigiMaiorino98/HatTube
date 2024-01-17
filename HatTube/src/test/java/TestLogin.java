@@ -1,4 +1,3 @@
-package LogicTier.GestioneRegistrazione;
 import LogicTier.GestioneAutenticazione.Login_Service;
 import LogicTier.Oggetti.Cliente;
 import Storage.DAO.Utente.ClienteDAO;
@@ -7,6 +6,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;
+
 
 public class TestLogin {
 

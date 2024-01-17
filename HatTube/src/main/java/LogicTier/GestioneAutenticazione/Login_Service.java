@@ -1,12 +1,11 @@
 package LogicTier.GestioneAutenticazione;
 
-import LogicTier.GestioneAdmin.Admin_Interfaccia;
+
 import LogicTier.Oggetti.Admin;
 import LogicTier.Oggetti.Cliente;
 import Storage.DAO.Utente.AdminDAO;
-import Storage.DAO.Utente.AdminDAO;
 import Storage.DAO.Utente.ClienteDAO;
-import Storage.DAO.Utente.ClienteDAO;
+
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
