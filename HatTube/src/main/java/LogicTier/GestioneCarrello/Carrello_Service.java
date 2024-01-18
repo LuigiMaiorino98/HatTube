@@ -24,7 +24,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
         ContenereDAO contentereDAO = new ContenereDAO();
 
         contentereDAO.inserisciNelCarrello(cliente.getCarrello().getCarrelloId(), cappello);
-        carrelloDAO.AggiornaCarrello(carrello);
+        carrelloDAO.aggiornaCarrello(carrello);
 
     }
 
@@ -43,7 +43,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
         carrello.setTotaleTemporaneo(0);
         carrello.getProdotti().clear();
         carrello.setNumeroElementi(0);
-        carrelloDAO.AggiornaCarrello(carrello);
+        carrelloDAO.aggiornaCarrello(carrello);
         return carrello;
 
     }
@@ -57,7 +57,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
         ArrayList<Cappello> cappelli = contentereDAO.recuperaContenuto(carrello.getCarrelloId());
         carrello.setProdotti(cappelli);
         Cappello cappello = carrello.rimuoviProdotto(id);
-        carrelloDAO.AggiornaCarrello(carrello);
+        carrelloDAO.aggiornaCarrello(carrello);
 
         contentereDAO.rimuoviContenuto(carrello.getCarrelloId(), cappello.getCodice());
         return carrello;
@@ -93,7 +93,7 @@ public class Carrello_Service implements Carrello_Interfaccia{
             acquistoDao.aggiornaAcquisto(carrello.getTotaleTemporaneo(), acquisto.getId());
             carrello.setTotaleTemporaneo(0.00);
             carrello.setNumeroElementi(0);
-            carrelloDAO.AggiornaCarrello(carrello);
+            carrelloDAO.aggiornaCarrello(carrello);
             return acquisto;
 
 
